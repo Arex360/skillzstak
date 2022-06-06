@@ -1,0 +1,55 @@
+{
+  "name": "fypproject",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "engines": {
+    "node": "16.15.0"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
+    "@mantine/core": "^4.2.4",
+    "@mantine/dropzone": "^4.1.3",
+    "@mantine/hooks": "^4.2.4",
+    "@mantine/next": "^4.1.3",
+    "@mantine/rte": "^4.2.4",
+    "@next/bundle-analyzer": "^12.1.5",
+    "@nhuttm/react-dropbox-chooser": "^0.0.5",
+    "@tinymce/tinymce-react": "^4.1.0",
+    "axios": "^0.27.2",
+    "base64-img": "^1.0.4",
+    "fork-bn.js": "^4.11.8",
+    "ipfs-http-client": "^56.0.3",
+    "ipfs-minifile": "^1.0.4",
+    "md5": "^2.3.0",
+    "next": "12.1.4",
+    "node-abort-controller": "^3.0.1",
+    "react": "18.0.0",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dom": "18.0.0",
+    "react-google-drive-picker": "^1.1.4",
+    "react-icons": "^4.3.1",
+    "react-player": "^2.10.1",
+    "react-quill": "^1.3.5",
+    "react-render-html": "^0.6.0",
+    "react-videoplayer": "^0.6.4",
+    "tabler-icons-react": "^1.44.0",
+    "web3": "^1.7.3",
+    "web3.storage": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.1",
+    "autoprefixer": "^10.4.4",
+    "eslint": "8.12.0",
+    "eslint-config-next": "12.1.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^4.6.3"
+  }
+}
