@@ -114,7 +114,7 @@ export default function AddVideo(){
     let uploadVideo = async ()=>{
         let contract = await getContract()
        console.log("Uplaoded video + "+courseHash)
-       alert('sss')
+      // alert('sss')
         await contract.addVideo(videoHash,courseHash,md5(videoHash),videoURL,parseInt(videoPrice)).send({from:localStorage.getItem('account')})
         alert("Video uploaded "+ md5(videoHash))
     }

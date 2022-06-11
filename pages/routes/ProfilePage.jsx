@@ -48,6 +48,7 @@ export default function ProfilePage(){
             let url = profileDetails.profilePicture
             console.log(url)
             document.querySelector("#profile").src = url;
+           // alert(url)
             setProfileURL(url)
             setData(temp)
             setProfileURL(profileDetails.ProfilePicture)
@@ -141,7 +142,7 @@ export default function ProfilePage(){
                     <h1>{data.username}</h1>
                     <br />
                     <hr />
-                    <label htmlFor="">Balence: {currentAmount}</label>
+                    <label htmlFor="">Balence: {parseInt(currentAmount)}</label>
                     <hr />
                     <div className="transfer flex justify-around">
                         <div className="left w-2/4">

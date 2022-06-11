@@ -61,10 +61,10 @@ export default function CoursePage({cid}){
         })
     }
     let fetchVideo =  async (hash) =>{
-        let contract = await getContract()
+        /*let contract = await getContract()
         let course = await contract.getVideo(hash).call({from: localStorage.getItem('account')})
         console.table(course)
-        setSelectedVideo(course.videoUrl)
+        setSelectedVideo(course.videoUrl)*/
     }
     let purchaseVideo = async (hash)=>{
         let contract = await getContract()
@@ -94,9 +94,10 @@ export default function CoursePage({cid}){
 
         let data = []
         for(let i = 0 ; i <videosList.length;i++){
-            let video = await contract.getVideoTitle(videosList[i]).call({from:localStorage.getItem('account')})
             let hash = videosList[i]
-            data.push(<VideoBar purchaseVideo={()=>purchaseVideo(hash)}  onClick={()=>fetchVideo(hash)} title={video.title} isPurshaed={video.purchased} price={video.price}/>)
+            let video = await contract.getVideoTitle(hash).call({from:localStorage.getItem('account')})
+            console.log('video '+hash)
+            data.push(<VideoBar courseHash={cid} hash={hash} key={'a'+i} purchaseVideo={()=>purchaseVideo(hash)}  onClick={()=>fetchVideo(hash)} title={video.title} isPurshaed={video.purchased} price={video.price}/>)
         }
         setVideos(data)
         
@@ -115,6 +116,7 @@ export default function CoursePage({cid}){
         if(localStorage.getItem("isLoggedIn") == 'true'){
             load()
             isCourseSubscribed(cid)
+            setSelectedVideo(localStorage.getItem(cid))
         }
     },[cid])
     return(

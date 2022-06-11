@@ -1,13 +1,27 @@
 import Image from "next/image";
+import { getContract } from "../web3/smartContract";
 import { toEth } from "../web3/web3Service";
 
-export default function VideoBar({title,isPurshaed,price,onClick,purchaseVideo}){
+export default function VideoBar({courseHash,title,isPurshaed,price,onClick,hash,purchaseVideo}){
     let allowClick = ()=>{
         if(isPurshaed){
             onClick()
         }else{
             return
         }
+    }
+    let purchaseVideoOfCourse = async ()=>{
+        let contract = await getContract()
+        await contract.purchaseVideo(hash).send({from:localStorage.getItem('account') })
+        window.location.reload()
+    }
+    let fetchVideo =  async () =>{
+        let contract = await getContract()
+        let course = await contract.getVideo(hash).call({from: localStorage.getItem('account')})
+        console.table(course)
+        localStorage.setItem(courseHash,course.videoUrl)
+        alert(hash)
+        window.location.reload()
     }
     return(
         <>
@@ -19,8 +33,8 @@ export default function VideoBar({title,isPurshaed,price,onClick,purchaseVideo})
                 <label htmlFor="">{title}</label>
             </div>
             <div className="right">
-                {!isPurshaed &&<button onClick={purchaseVideo} className="bg-green-500 px-7 py-2 rounded-lg text-white font-bold">{toEth(price) + " SKZ"}</button>}
-                {isPurshaed  &&<button  className="bg-green-500 px-7 py-2 rounded-lg text-white font-bold">Purchased</button>}
+                {!isPurshaed &&<button onClick={purchaseVideoOfCourse} className="bg-green-500 px-7 py-2 rounded-lg text-white font-bold">{toEth(price) + " SKZ"}</button>}
+                {isPurshaed  &&<button onClick={fetchVideo} className="bg-green-500 px-7 py-2 rounded-lg text-white font-bold">Play</button>}
             </div>
         </div>
         </>

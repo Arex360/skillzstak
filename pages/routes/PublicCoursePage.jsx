@@ -141,7 +141,7 @@ export default function PublicCoursePage(){
                     <h1>{data.username}</h1>
                     <br />
                     <hr />
-                    <label htmlFor="">Balence: {currentAmount}</label>
+                    <label htmlFor="">Balence: {parseInt(currentAmount)}</label>
                     <hr />
                     <div className="transfer flex justify-around">
                         <div className="left w-2/4">
